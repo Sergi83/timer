@@ -1,0 +1,23 @@
+//
+@import "../base/variables_mixins";
+
+.btn {
+  line-height: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  color: $btn-c;
+  background-color: $btn-bg;
+
+  width: 5em;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  border: none;
+
+  @include bord-radius(0.5rem);
+
+  &:hover {
+    color: $btn-c-hov;
+    background-color: $btn-bg-hov;
+  }
+}

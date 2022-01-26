@@ -1,0 +1,23 @@
+// * Variables
+
+// colors
+
+$base-c: #2b2929;
+$base-bg: #f1eeee;
+$time-bord: rgb(78, 75, 75);
+
+$btn-c: rgb(236, 228, 228);
+$btn-bg: rgb(161, 158, 158);
+
+$btn-c-hov: rgb(61, 58, 58);
+$btn-bg-hov: #fff;
+
+// * Mixins
+
+@mixin bord-radius($br) {
+  border-radius: $br;
+  -webkit-border-radius: $br;
+  -moz-border-radius: $br;
+  -ms-border-radius: $br;
+  -o-border-radius: $br;
+}

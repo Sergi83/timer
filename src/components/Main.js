@@ -19,11 +19,18 @@ const Main = () => {
     setIsActive(!isActive);
   };
 
+  // const toggleStopTimer = (e) => {
+  //   e.preventDefault();
+  //   setIsActive(!isActive);
+  //   !isActive && setTotalSeconds(0);
+  // };
+
   const resetTimer = (e) => {
     e.preventDefault();
     setIsActive(false);
     setTotalSeconds(0);
     setTimer("00: 00: 00");
+    setIsActive(true);
   };
 
   // counting
@@ -76,6 +83,7 @@ const Main = () => {
         timer={timer}
         totalSeconds={totalSeconds}
         isActive={isActive}
+        // toggleStopTimer={toggleStopTimer}
         toggleTimer={toggleTimer}
         resetTimer={resetTimer}
       />

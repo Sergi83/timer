@@ -19,8 +19,8 @@ const Home = ({ timer, totalSeconds, isActive, toggleTimer, resetTimer, toggleSt
         <div className="btn-container">
           <div
             id="start"
-            className={`btn ${isActive ? "active" : "stop-clear-timer"}`}
-            onClick={toggleTimer}
+            className={`btn ${isActive ? "stop-clear-timer" : ""}`}
+            onClick={toggleStopTimer}
           >
             {isActive ? <VscStopCircle /> : <VscDebugStart />}
           </div>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+// rxjs
+// import { Observable, fromEvent } from "rxjs";
+
 // representational component
 import Home from "../pages/Home";
 
 
 
-
 const Main = () => {
-
   // The state for our timer
   const [timer, setTimer] = useState("00: 00: 00");
   const [totalSeconds, setTotalSeconds] = useState(0);
@@ -19,11 +20,11 @@ const Main = () => {
     setIsActive(!isActive);
   };
 
-  // const toggleStopTimer = (e) => {
-  //   e.preventDefault();
-  //   setIsActive(!isActive);
-  //   !isActive && setTotalSeconds(0);
-  // };
+  const toggleStopTimer = (e) => {
+    e.preventDefault();
+    setIsActive(!isActive);
+    !isActive && setTotalSeconds(0);
+  };
 
   const resetTimer = (e) => {
     e.preventDefault();
@@ -32,6 +33,13 @@ const Main = () => {
     setTimer("00: 00: 00");
     setIsActive(true);
   };
+
+  // const clearTimer = (e) => {
+  // e.preventDefault();
+  //   setIsActive(false);
+  //   setTotalSeconds(0);
+  //   setTimer("00: 00: 00");
+  // };
 
   // counting
   useEffect(() => {
@@ -67,9 +75,9 @@ const Main = () => {
     const dayLimit = 24 * 3600;
 
     //! block seconds adding (after one day)
-    if(totalSeconds >= dayLimit) {
+    if (totalSeconds >= dayLimit) {
       setTotalSeconds(dayLimit + 1);
-    };
+    }
 
     // get time info
     return totalSeconds < dayLimit
@@ -83,7 +91,7 @@ const Main = () => {
         timer={timer}
         totalSeconds={totalSeconds}
         isActive={isActive}
-        // toggleStopTimer={toggleStopTimer}
+        toggleStopTimer={toggleStopTimer}
         toggleTimer={toggleTimer}
         resetTimer={resetTimer}
       />

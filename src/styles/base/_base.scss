@@ -25,6 +25,7 @@ h1 {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 0.25em;
+  text-transform: capitalize;
 }
 
 // * components
@@ -43,8 +44,10 @@ h1 {
 }
 
 #time {
+  margin: 0 20%;
   padding: 0.25em;
-  border: 1px solid $time-bord;
-  font-size: 1rem;
-  text-transform: uppercase;
+  border: 2px solid $time-bord;
+  font-size: 1.5rem;
+  text-transform: lowercase;
+  color: $timer-c;
 }

@@ -21,3 +21,8 @@
     background-color: $btn-bg-hov;
   }
 }
+
+.active {
+  color: $btn-c-active;
+  border: 2px solid $btn-b-active;
+}

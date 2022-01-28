@@ -3,7 +3,7 @@ import { GiPauseButton } from "react-icons/gi";
 import { VscDebugStart, VscStopCircle } from "react-icons/vsc";
 
 
-const Home = ({ timer, totalSeconds, isActive, toggleTimer, resetTimer }) => {
+const Home = ({ timer, totalSeconds, isActive, toggleTimer, resetTimer, toggleStopTimer }) => {
 
   return (
     <div className="page">
@@ -19,13 +19,13 @@ const Home = ({ timer, totalSeconds, isActive, toggleTimer, resetTimer }) => {
         <div className="btn-container">
           <div
             id="start"
-            className={`btn ${isActive ? "active" : ""}`}
-            onClick={toggleTimer}
+            className={`btn ${isActive ? "stop-clear-timer" : ""}`}
+            onClick={toggleStopTimer}
           >
             {isActive ? <VscStopCircle /> : <VscDebugStart />}
           </div>
 
-          {!isActive && totalSeconds !== 0 && (
+          {totalSeconds !== 0 && (
             <div
               id="wait"
               className={`btn ${

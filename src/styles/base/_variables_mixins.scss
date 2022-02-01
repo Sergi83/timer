@@ -25,3 +25,26 @@ $btn-bg-hov: #fff;
   -ms-border-radius: $br;
   -o-border-radius: $br;
 }
+
+
+// * media queries
+// queue of media queries: should be the same order as in the mixin
+@mixin mq($screen) {
+  @if $screen==phone-only {
+    @media (max-width: 500px) {
+      @content;
+    }
+  }
+
+  @else if $screen==tablet-up {
+    @media (min-width: 501px) {
+      @content;
+    }
+  }
+
+  @else if $screen==desktop-up {
+    @media (min-width: 1000px) {
+      @content;
+    }
+  }
+}

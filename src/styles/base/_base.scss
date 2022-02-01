@@ -9,7 +9,7 @@ code {
 body {
   background: $base-bg;
   box-sizing: border-box;
-  height: 100vh;
+  height: 80vh;
   text-align: center;
   font-size: 14.67px;
   font-weight: 300;
@@ -50,4 +50,41 @@ h1 {
   font-size: 1.5rem;
   text-transform: lowercase;
   color: $timer-c;
+}
+
+
+// * media queries
+
+@include mq(phone-only) {
+  #time {
+    margin: 0 5%;
+  }
+}
+
+@include mq(tablet-up) {
+  #time {
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: 5%;
+  }
+  
+}
+
+@include mq(desktop-up) {
+
+  h1 {
+    font-size: 3.5rem;
+    margin: 10%;
+  }
+
+  #time {
+    font-size: 2.5rem;
+  }
+
+  .title {
+    margin: 3em 20%;
+  }
 }

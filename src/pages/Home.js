@@ -2,6 +2,7 @@ import React from "react";
 import { GiPauseButton } from "react-icons/gi";
 import { VscDebugStart, VscStopCircle } from "react-icons/vsc";
 
+
 const Home = ({
   timer,
   state,
@@ -10,6 +11,7 @@ const Home = ({
   onWaitTimer,
   onResetTimer,
 }) => {
+  
   return (
     <div className="page">
       <div className="container">
@@ -23,7 +25,7 @@ const Home = ({
 
         <div className="btn-container">
           {state !== "start" && (
-            <div onClick={onStartTimer} className="btn">
+            <div onClick={onStartTimer} className="btn active">
               <VscDebugStart />
             </div>
           )}
@@ -35,12 +37,12 @@ const Home = ({
           )}
 
           {state === "start" && (
-            <div onClick={onWaitTimer} className="btn">
+            <div onClick={onWaitTimer} className="btn active">
               <GiPauseButton />
             </div>
           )}
 
-          {state !== "stop" && (
+          {(state === "wait") && (
             <div onClick={onResetTimer} className="btn">
               reset
             </div>

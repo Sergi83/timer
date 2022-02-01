@@ -9,32 +9,39 @@ import Home from "../pages/Home";
 
 
 const Main = () => {
-  //
+
+  // states for controlling time flow
   const [seconds, setSeconds] = useState(0);
   const [pause, setPause] = useState(0);
   const [state, setState] = useState("stop");
 
-  // get time format (hh:mm:ss)
-  const timer = new Date(seconds).toISOString().slice(11, 19);
+  // get time string (hh:mm:ss)
+  const timer = new Date(seconds)
+    .toISOString()
+    .slice(11, 19);
 
-
+  // get time flow (+changes)
   useEffect(() => {
-    const observer = new Subject();
-    const timeInterval = interval(1000);
+    const subscriberSubject$ = new Subject();
+    const timeInterval$ = interval(1000);
 
-    timeInterval.pipe(takeUntil(observer)).subscribe(() => {
-      if (state === "start") {
-        setSeconds((seconds) => seconds + 1000);
+    timeInterval$
+      .pipe(takeUntil(subscriberSubject$))
+      .subscribe(() => {
+        if (state === "start") {
+        setSeconds(seconds => seconds + 1000);
+        setPause(0);
       }
     });
 
     return () => {
-      observer.next();
-      observer.complete();
+      subscriberSubject$.next();
+      subscriberSubject$.complete();
     };
   }, [state]);
 
 
+  // onClick functions for buttons
   const onStartTimer = () => {
     setState("start");
   };
@@ -42,6 +49,7 @@ const Main = () => {
   const onStopTimer = () => {
     setState("stop");
     setSeconds(0);
+    setPause(0);
   };
 
   const onResetTimer = () => {
@@ -50,12 +58,12 @@ const Main = () => {
   };
 
   const onWaitTimer = () => {
-    const stopTimer = Date.now();
+    const pauseTimer = Date.now();
 
-    if (stopTimer - pause <= 300) {
+    if (pauseTimer - pause <= 300) {
       setState("wait");
     }
-    setPause(stopTimer);
+    setPause(pauseTimer);
   };
 
   return (

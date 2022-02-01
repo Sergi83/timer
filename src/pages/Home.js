@@ -2,9 +2,14 @@ import React from "react";
 import { GiPauseButton } from "react-icons/gi";
 import { VscDebugStart, VscStopCircle } from "react-icons/vsc";
 
-
-const Home = ({ timer, totalSeconds, isActive, toggleTimer, resetTimer, toggleStopTimer }) => {
-
+const Home = ({
+  timer,
+  state,
+  onStartTimer,
+  onStopTimer,
+  onWaitTimer,
+  onResetTimer,
+}) => {
   return (
     <div className="page">
       <div className="container">
@@ -12,32 +17,31 @@ const Home = ({ timer, totalSeconds, isActive, toggleTimer, resetTimer, toggleSt
           <h1>timer</h1>
 
           <div id="time">
-            <span>{timer} (hh: mm: ss)</span>
+            <span>{timer}</span>
           </div>
-          <div>{totalSeconds} s</div>
         </div>
-        <div className="btn-container">
-          <div
-            id="start"
-            className={`btn ${isActive ? "stop-clear-timer" : ""}`}
-            onClick={toggleStopTimer}
-          >
-            {isActive ? <VscStopCircle /> : <VscDebugStart />}
-          </div>
 
-          {totalSeconds !== 0 && (
-            <div
-              id="wait"
-              className={`btn ${
-                !isActive & (totalSeconds !== 0) ? "active" : ""
-              }`}
-              onDoubleClick={toggleTimer}
-            >
+        <div className="btn-container">
+          {state !== "start" && (
+            <div onClick={onStartTimer} className="btn">
+              <VscDebugStart />
+            </div>
+          )}
+
+          {state !== "stop" && (
+            <div onClick={onStopTimer} className="btn">
+              <VscStopCircle />
+            </div>
+          )}
+
+          {state === "start" && (
+            <div onClick={onWaitTimer} className="btn">
               <GiPauseButton />
             </div>
           )}
-          {!isActive && totalSeconds > 0 && (
-            <div id="reset" className="btn" onClick={resetTimer}>
+
+          {state !== "stop" && (
+            <div onClick={onResetTimer} className="btn">
               reset
             </div>
           )}

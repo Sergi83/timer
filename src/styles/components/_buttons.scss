@@ -26,3 +26,18 @@
   color: $btn-c-active;
   border: 2px solid $btn-b-active;
 }
+
+// * media queries
+@include mq(tablet-up) {
+  .btn {
+    margin: 1rem 0.5rem;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin: auto 20%;
+  }
+}
